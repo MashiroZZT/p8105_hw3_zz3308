@@ -127,7 +127,7 @@ head(nhanes_merged)
 education_sex_table <- nhanes_merged %>%
   group_by(education, sex) %>%
   summarise(count = n()) %>%
-  spread(sex, count, fill = 0)
+  pivot_wider(names_from = sex, values_from = count, values_fill = 0)
 
 # Print the table
 print(education_sex_table)
@@ -288,13 +288,3 @@ ggplot(citi_bike_2024, aes(x = rideable_type, y = duration, fill = member_casual
 
 
 The plot shows that electric bikes tend to have longer ride durations for casual riders, particularly in July, suggesting that these bikes are popular for leisurely or recreational trips in warmer months. Members, on the other hand, display more consistent and shorter ride durations across both classic and electric bikes, indicating more utilitarian or commuting usage. Seasonal differences are evident, with July seeing longer rides compared to January, especially for casual users. Overall, electric bikes contribute to more variability in ride durations, particularly among casual riders, while members tend to use bikes more consistently for shorter trips.
-
-
-
-
-
-
-
-
-
-
